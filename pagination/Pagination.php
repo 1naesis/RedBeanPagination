@@ -1,6 +1,6 @@
 <?php
 
-namespace pagination;
+namespace naesis\pagination;
 
 /**
  * Class Pagination
@@ -61,6 +61,7 @@ namespace pagination;
 class Pagination
 {
     private $page,
+            $side,
             $limit,
             $table,
             $where,
@@ -76,6 +77,7 @@ class Pagination
         $this->db = $array['db'];
         $this->page = (int)$array['page']??1;
         $this->limit = $array['limit']??12;
+        $this->side = $array['side']??2;
         $this->table = $array['table'];
         $this->where = $array['where'];
         $this->variables = $array['variables'];
@@ -101,7 +103,6 @@ class Pagination
     }
 
     public function getPagination($templates){
-        $side = 2;
         $max_page = ceil($this->count / $this->limit);
         $template = str_replace("{URL}", $this->url, $templates['template']);
         $template_active = str_replace("{URL}", $this->url, $templates['template-active']);
@@ -118,7 +119,7 @@ class Pagination
             if($i+1 === $this->page) {
                 echo str_replace("{PAGE}", $i + 1, $template_active);
             }
-            else if(($i+1 >= $this->page - $side) && ($i+1 <= $this->page + $side)){
+            else if(($i+1 >= $this->page - $this->side) && ($i+1 <= $this->page + $this->side)){
                 echo str_replace("{PAGE}", $i + 1, $template);
             }
         }
@@ -161,7 +162,7 @@ class Pagination
 
     public function test(){
 
-        return str_replace("{PAGE}", $this->page, $this->url);;
+        return str_replace("{PAGE}", $this->page, $this->url);
     }
 }
 
