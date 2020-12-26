@@ -1,0 +1,11 @@
+{
+    "name": "naesis/naesis",
+    "description": "Pagination for RedBean",
+    "authors": [
+        {
+            "name": "1naesis",
+            "email": "1naesis@gmail.com"
+        }
+    ],
+    "require": {}
+}
