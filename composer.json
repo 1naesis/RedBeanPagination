@@ -1,11 +1,17 @@
 {
     "name": "naesis/pagination",
     "description": "Pagination for RedBean",
+    "license": "proprietary",
     "authors": [
         {
             "name": "1naesis",
             "email": "1naesis@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "classmap": ["pagination"]
+    }
 }
